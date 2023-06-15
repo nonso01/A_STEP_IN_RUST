@@ -2,7 +2,8 @@ fn main() {
     // s has the type String and it's stored in the heap
     let hello_rust = String::from("hello rust");
     // and doesn't have a Copy trait
-    // so using a reference to avoid ownership by println
+    // so using a reference to avoid ownership by println!,
+    // even though it takes references
 
     println!("{}", &hello_rust);
 
@@ -19,5 +20,22 @@ fn main() {
 
     let (a, two_point_zero, two_hundred_and_fourthy) = tup;
 
-    println!("char is {}, f32 is {}, u8 is {}", a, two_point_zero, two_hundred_and_fourthy); // a macro
+    println!("char is {}, f32 is {}, u8 is {}", a, two_point_zero, two_hundred_and_fourthy);
+    // you could also get the values of a tuple through indexing
+    println!("firts element of tup is {}", tup.0);
+
+    // then we have structs, (to structure data), funny thing is,
+    // it looks like js Object
+
+    struct Rectangle {
+        width: u32,
+        height: u32
+    }
+
+    let rect_1 = Rectangle {
+        width: 30,
+        height: 40
+    };
+
+    println!("the width of rect_1 is {}", rect_1.width);
 }
