@@ -29,6 +29,8 @@ fn main() {
 // i just want to understand how match works
 fn alert_tool(tool: JavascriptTool) -> u8 {
     match tool {
+        // just like arrow fn
+        // const foo = (param) => baa in js
         JavascriptTool::React(_) => {
             println!("yeah React won");
                 0
