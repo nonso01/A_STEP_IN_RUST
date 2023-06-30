@@ -39,8 +39,16 @@ fn alert_tool(tool: JavascriptTool) -> u8 {
             println!("Yeah vue is a great choice");
                 1
         }
-        _=> todo!()
+        _ => todo!(),
     }
+
+    // we also have if let syntax :)
+    /**
+     * if let JavascriptTool::React(_) = tool {
+     * println!("....");
+     * } else {
+     * }
+     */
 }
 
 
