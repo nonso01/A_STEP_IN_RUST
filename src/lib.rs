@@ -4,6 +4,7 @@
 // i learn daily in  RUST
 // this file is not intended to be ran or compiled, 
 // but could be tested so as to be error free
+// for now the compiler will yield se resolvable errors
 
 const WHAT_IS_RUST: str = "Rust is a statically typed language like C, it is also used for the creation of a large spectrum of softwares from servers, database, embeded sys, to AI";
 
