@@ -1,10 +1,8 @@
 #![allow(dead_code)]
-// Hello!,  here are brief notes of what i learn in
-// ~~~~~~~~~~~~ RUST ~~~~~~~~~~~~
 
 
 // since we are in a library crate, we are
-// going to use `const` do declare global vars.
+// going to use `const` to declare global vars.
 
 pub mod what_is_rust {
     pub fn rust_is() -> &'static str {
