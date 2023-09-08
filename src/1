@@ -12,7 +12,7 @@ fn main() {
 }
 
 fn show_shadowing() {
-    let x: i8 = 20; // x is an immutable variable
+    let x: i8 = 20;
     let x:i8 = x * 2;
 
     println!("{x}");

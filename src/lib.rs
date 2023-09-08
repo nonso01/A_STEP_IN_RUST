@@ -6,7 +6,6 @@
 
 pub mod what_is_rust {
     pub fn rust_is() -> String {
-        // haven't covered lifetime yet
-        "Rust is a statically typed language, like C, but sometimes knows what you mean out of the box. Widely used for the creation of a large variety of softwares, ranging from servers , database, embeded sys and AI.".to_string()
+        "Rust is a statically typed language, like C, but sometimes knows what you mean out of the box. And it's widely used for the creation of a large variety of softwares, ranging from servers , database, embeded sys and AI.".to_string()
     }
 }
