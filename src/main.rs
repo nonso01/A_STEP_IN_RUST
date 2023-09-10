@@ -15,6 +15,12 @@ fn show_shadowing() {
     let x: i8 = 20; // x is an immutable variable
     let x:i8 = x * 2;
 
-    println!("{x}");
+    println!("the value of x is {x}");
 }
 
+fn show_mutation() {
+    let mut y = ;
+    y = 1_000;
+
+    println!("y has been changed to {y}");
+}
