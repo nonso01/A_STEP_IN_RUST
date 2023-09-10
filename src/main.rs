@@ -20,7 +20,7 @@ fn show_shadowing() {
 }
 
 fn show_mutation() {
-    let mut y = 0;
+    let mut y: i16 = 0;
     y = 1_000;
 
     println!("y has been changed to {y}");
