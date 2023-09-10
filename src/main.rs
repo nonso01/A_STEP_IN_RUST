@@ -6,7 +6,7 @@
 // Rust is extremly strict, using  /**/ will
 // result as an error, if not used properly.
 
-const RUST: &str = "this is a constant";
+const RUST: &str = "this is a constant"; // string slice
 
 fn main() {
     show_shadowing();
@@ -24,4 +24,8 @@ fn show_mutation() {
     y = 1_000;
 
     println!("y has been changed to {y}");
+}
+
+fn show_tuple(&tup) {
+
 }
