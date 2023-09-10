@@ -1,4 +1,5 @@
 #![allow(dead_code)]
+// enums vs structs, learning about enums and special Option<T>
 
 //#[derive(Debug)]
 
@@ -19,7 +20,7 @@ fn show_shadowing() {
 }
 
 fn show_mutation() {
-    let mut y = ;
+    let mut y = 0;
     y = 1_000;
 
     println!("y has been changed to {y}");
