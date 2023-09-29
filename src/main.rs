@@ -11,11 +11,13 @@ const RUST: &str = "this is a constant"; // string slice
 fn main() {
     let mut float_x: f32 = 5.5;
 
-    show_shadowing();
+  //  show_shadowing();
 
     show_mutation(&mut float_x); // mutable reference
 
-    show_tuple((35, 40, 70)); // a tuple
+  //  show_tuple((35, 40, 70)); // a tuple
+
+    fizzbuzz(20);
 }
 
 fn show_shadowing() {
@@ -35,4 +37,14 @@ fn show_tuple(tup: (u8,u8,u8)) {
     let index_at_zero = tup.0; // indexing a tuple
 
     println!("element at index 0 is {index_at_zero}");
+}
+
+fn fizzbuzz(x: u128) {
+    for n in 0..x {
+        if n % 2 == 0 {
+            println!("fizz = {n}");
+        } else {
+            println!("buzz = {n}");
+        }
+    }
 }
