@@ -1,7 +1,5 @@
 #![allow(dead_code)]
-// enums vs structs, learning about enums and special Option<T>
-
-//#[derive(Debug)]
+use std::collections::HashMap;
 
 // Rust is extremly strict, using  /**/ will
 // result as an error, if not used properly.
@@ -18,6 +16,8 @@ fn main() {
   //  show_tuple((35, 40, 70)); // a tuple
 
     fizzbuzz(20);
+
+    show_hashmap("hello my friend hello friend");
 }
 
 fn show_shadowing() {
@@ -47,4 +47,14 @@ fn fizzbuzz(x: u128) {
             println!("buzz = {n}");
         }
     }
+}
+
+fn show_hashmap(word: &str) {
+    let mut map = HashMap::new();
+
+    for w in word.split_whitespace() {
+        let count = map.entry(w).or_insert(0);
+        *count += 1;
+    }
+    println!("{:?}", map);
 }
