@@ -7,17 +7,28 @@ use std::collections::HashMap;
 const RUST: &str = "this is a constant"; // string slice
 
 fn main() {
-    let mut float_x: f32 = 5.5;
+  //  let mut float_x: f32 = 5.5;
 
   //  show_shadowing();
 
-    show_mutation(&mut float_x); // mutable reference
+   // show_mutation(&mut float_x); // mutable reference
 
   //  show_tuple((35, 40, 70)); // a tuple
 
-    fizzbuzz(20);
+  //  fizzbuzz(20);
 
     show_hashmap("hello my friend hello friend");
+
+    let mut stop_loop: i8 = 0;
+
+    loop {
+        stop_loop += 1;
+        if stop_loop >= 120 {
+            println!("stop_loop is {stop_loop}");
+            break;
+        }
+        println!("again");
+    }
 }
 
 fn show_shadowing() {
@@ -34,7 +45,9 @@ fn show_mutation(old_val: &mut f32) {
 }
 
 fn show_tuple(tup: (u8,u8,u8)) { 
-    let index_at_zero = tup.0; // indexing a tuple
+    let index_at_zero = tup.0; 
+    // indexing a tuple
+    // the code might panic!
 
     println!("element at index 0 is {index_at_zero}");
 }
@@ -58,3 +71,5 @@ fn show_hashmap(word: &str) {
     }
     println!("{:?}", map);
 }
+
+fn guessing_game() {}
