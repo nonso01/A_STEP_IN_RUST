@@ -4,7 +4,8 @@ use std::collections::HashMap;
 // Rust is extremly strict, using  /**/ will
 // result as an error, if not used properly.
 
-const RUST: &str = "this is a constant"; // string slice
+const RUST: &str = "this is a constant";
+const BINARY_NUMBER: i8 = 0b110110;
 
 fn main() {
   //  let mut float_x: f32 = 5.5;
@@ -17,18 +18,9 @@ fn main() {
 
   //  fizzbuzz(20);
 
-    show_hashmap("hello my friend hello friend");
+  //  show_hashmap("hello my friend hello friend");
 
-    let mut stop_loop: i8 = 0;
-
-    loop {
-        stop_loop += 1;
-        if stop_loop >= 120 {
-            println!("stop_loop is {stop_loop}");
-            break;
-        }
-        println!("again");
-    }
+    println!("{BINARY_NUMBER}");
 }
 
 fn show_shadowing() {
@@ -72,4 +64,14 @@ fn show_hashmap(word: &str) {
     println!("{:?}", map);
 }
 
-fn guessing_game() {}
+fn show_loop() {
+    let mut stop_loop: i8 = 0;
+loop {
+         stop_loop += 1;
+          if stop_loop >= 120 {
+             println!("stop_loop is {stop_loop}");
+             break;
+          }
+          println!("again");    
+    }
+}
