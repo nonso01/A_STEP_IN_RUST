@@ -1,6 +1,6 @@
 #![allow(dead_code)]
-use std::collections::HashMap;
-
+use::std::{collections::HashMap, cmp::Ordering, io};
+use rand::Rng;
 // Rust is extremly strict, using  /**/ will
 // result as an error, if not used properly.
 
@@ -20,7 +20,11 @@ fn main() {
 
   //  show_hashmap("hello my friend hello friend");
 
-    println!("{BINARY_NUMBER}");
+    // println!("{BINARY_NUMBER}");
+    
+    // println!("{}", t(Some(0)));
+    //
+    guessing_game();
 }
 
 fn show_shadowing() {
@@ -38,8 +42,7 @@ fn show_mutation(old_val: &mut f32) {
 
 fn show_tuple(tup: (u8,u8,u8)) { 
     let index_at_zero = tup.0; 
-    // indexing a tuple
-    // the code might panic!
+    // indexing a tuple element that does not exist will cause the program to panic
 
     println!("element at index 0 is {index_at_zero}");
 }
@@ -73,5 +76,37 @@ loop {
              break;
           }
           println!("again");    
+    }
+}
+
+
+fn guessing_game() {
+    println!("guess the number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    loop {
+        println!("please input your guess");
+        let mut guess = String::new();
+
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("failed to read line");
+
+        let guess: i32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue
+        };
+
+        println!("you guessed: {guess}");
+
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("too small"),
+            Ordering::Greater => println!("too big"),
+            Ordering::Equal => {
+                println!("you Win!!");
+                break;
+            }
+        }
     }
 }
