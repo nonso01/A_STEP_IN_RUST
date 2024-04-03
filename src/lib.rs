@@ -1,6 +1,5 @@
 #![allow(dead_code)]
 
-
 // since we are in a library crate, we are
 // going to use `const` to declare global vars.
 
