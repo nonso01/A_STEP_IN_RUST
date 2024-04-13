@@ -1,10 +1,114 @@
 #![allow(dead_code)]
 
-// since we are in a library crate, we are
-// going to use `const` to declare global vars.
+pub mod learn_rust {
+    use ::std::{
+        cmp::Ordering,
+        collections::HashMap,
+        fs::File,
+        io::{self, Read},
+    };
+    use rand::Rng;
 
-pub mod what_is_rust {
-    pub fn rust_is() -> String {
-        "Rust is a statically typed language, like C, but sometimes knows what you mean out of the box. And it's widely used for the creation of a large variety of softwares, ranging from servers , database, embeded sys and AI.".to_string()
+    pub fn show_shadowing() {
+        let x: i8 = 20; // x is an immutable variable
+        let x: i8 = x * 2;
+
+        println!("the value of x is {x}");
+    }
+
+    pub fn show_mutation(old_val: &mut f32) {
+        *old_val = 1.5;
+
+        println!("old value has been changed to {old_val}");
+    }
+
+    pub fn show_tuple(tup: (u8, u8, u8)) {
+        let index_at_zero = tup.0;
+        // indexing a tuple element that does not exist will cause the program to panic
+        println!("element at index 0 is {index_at_zero}");
+    }
+
+    pub fn fizzbuzz(x: u128) {
+        for n in 0..x {
+            if n % 2 == 0 {
+                println!("fizz = {n}");
+            } else {
+                println!("buzz = {n}");
+            }
+        }
+    }
+
+    pub fn show_hashmap(word: &str) {
+        let mut map = HashMap::new();
+
+        for w in word.split_whitespace() {
+            let count = map.entry(w).or_insert(0);
+            *count += 1;
+        }
+        println!("{:?}", map);
+    }
+
+    pub fn show_loop() {
+        let mut stop_loop: i8 = 0;
+        loop {
+            stop_loop += 1;
+            if stop_loop >= 120 {
+                println!("stop_loop is {stop_loop}");
+                break;
+            }
+            println!("again");
+        }
+    }
+
+    pub fn guessing_game() {
+        println!("guess the number!");
+
+        let secret_number = rand::thread_rng().gen_range(1..=100);
+
+        loop {
+            println!("please input your guess");
+            let mut guess = String::new();
+
+            io::stdin()
+                .read_line(&mut guess)
+                .expect("failed to read line");
+
+            let guess: i32 = match guess.trim().parse() {
+                Ok(num) => num,
+                Err(_) => continue,
+            };
+
+            println!("you guessed: {guess}");
+
+            match guess.cmp(&secret_number) {
+                Ordering::Less => println!("too small"),
+                Ordering::Greater => println!("too big"),
+                Ordering::Equal => {
+                    println!("you Win!!");
+                    break;
+                }
+            }
+        }
+    }
+
+    pub fn quadratic_formula(a: f32, b: f32, c: f32) -> (f32, f32) {
+        // x = (-b ± √b2 - 4ac) / 2a
+        let value_in_square_root: f32 = (b * b) - 4.0 * a * c;
+        let root1: f32 = (-b + value_in_square_root.sqrt()) / (2.0 * a);
+        let root2: f32 = (-b - value_in_square_root.sqrt()) / (2.0 * a);
+
+        (root1, root2)
+    }
+
+    pub fn read_file_content(filename: &str) -> Result<String, io::Error> {
+        let mut _file = File::open(filename)?;
+        let mut file_content = String::new();
+
+        _file.read_to_string(&mut file_content)?;
+        Ok(file_content)
+    }
+
+    pub fn math_with_int(x: i64) -> Option<i64> {
+        x.checked_div(3)
     }
 }
