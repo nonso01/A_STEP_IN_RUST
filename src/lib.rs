@@ -112,8 +112,24 @@ pub mod learn_rust {
         x.checked_div(3)
     }
 
-    pub fn frequency_sort(_n: &Vec<i32>) -> Vec<i32> {
-        let mut _res: Vec<i32> = _n.to_vec();
-        _res
+    pub fn frequency_sort(n: &Vec<i32>) -> Vec<i32> {
+        let mut res: Vec<i32> = n.to_vec();
+        let mut freq_map = HashMap::new();
+
+        for number in res.clone().into_iter() {
+            *freq_map.entry(number).or_insert(0) += 1
+        }
+
+        res.sort_by(|a, b| {
+            let freq_a = freq_map.get(a).unwrap();
+            let freq_b = freq_map.get(b).unwrap();
+
+            if freq_a == freq_b {
+                b.cmp(a)
+            } else {
+                freq_a.cmp(&freq_b)
+            }
+        });
+        res // todo
     }
 }
