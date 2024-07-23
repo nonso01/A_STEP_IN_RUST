@@ -1,12 +1,9 @@
 #![allow(dead_code)]
-use a_step_in_rust::learn_rust::math_with_int;
+use a_step_in_rust::learn_rust::frequency_sort;
 
 fn main() {
-    let possible_int = math_with_int(10);
-    match possible_int {
-        Some(number) => println!("{number}"),
-        None => println!("Math Error"),
-    }
+    let array = vec![2, 2, 2, 1, 1, 3];
+    let _sorted = frequency_sort(&array);
 
-    assert_eq!(possible_int, Some(3));
+    println!("{:?}", _sorted);
 }

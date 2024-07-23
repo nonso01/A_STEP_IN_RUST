@@ -111,4 +111,9 @@ pub mod learn_rust {
     pub fn math_with_int(x: i64) -> Option<i64> {
         x.checked_div(3)
     }
+
+    pub fn frequency_sort(_n: &Vec<i32>) -> Vec<i32> {
+        let mut _res: Vec<i32> = _n.to_vec();
+        _res
+    }
 }
