@@ -108,10 +108,6 @@ pub mod learn_rust {
         Ok(file_content)
     }
 
-    pub fn math_with_int(x: i64) -> Option<i64> {
-        x.checked_div(3)
-    }
-
     pub fn frequency_sort(n: &Vec<i32>) -> Vec<i32> {
         let mut res: Vec<i32> = n.to_vec();
         let mut freq_map = HashMap::new();
@@ -130,6 +126,6 @@ pub mod learn_rust {
                 freq_a.cmp(&freq_b)
             }
         });
-        res // todo
+        res
     }
 }
