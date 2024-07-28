@@ -128,4 +128,29 @@ pub mod learn_rust {
         });
         res
     }
+
+    pub fn restore_ip_addresses(raw_ip: &String) -> Vec<String> {
+        let mut _res: Vec<String> = vec![];
+        let mut _seg: Vec<String> = vec![];
+
+        // backtrack(&raw_ip, -1, 3, &_seg, &_res);
+        println!("{:?}", is_valid_seg(raw_ip));
+        _res
+    }
+
+    fn is_valid_seg(seg: &String) -> bool {
+        let seg_len: usize = seg.len();
+        if seg_len > 3 {
+            return false;
+        }
+        return if &seg[0..1] != "0" {
+            seg.parse::<u8>().expect("not a valid u8 int") <= 255
+        } else {
+            seg_len == 1
+        };
+    }
+
+    fn update_seg(raw_ip: &String, cd: i8, segs: &Vec<String>, res: &Vec<String>) {}
+
+    fn backtrack(raw_ip: &String, pd: i8, d: i8, segs: &Vec<String>, res: &Vec<String>) {}
 }
