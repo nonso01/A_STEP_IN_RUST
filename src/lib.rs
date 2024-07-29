@@ -129,28 +129,59 @@ pub mod learn_rust {
         res
     }
 
-    pub fn restore_ip_addresses(raw_ip: &String) -> Vec<String> {
-        let mut _res: Vec<String> = vec![];
-        let mut _seg: Vec<String> = vec![];
+    pub fn restore_ip_addresses(s: &String) -> Vec<String> {
+        let mut result = Vec::new();
+        let mut segments = Vec::new(); // lol this is cool
 
-        // backtrack(&raw_ip, -1, 3, &_seg, &_res);
-        println!("{:?}", is_valid_seg(raw_ip));
-        _res
-    }
-
-    fn is_valid_seg(seg: &String) -> bool {
-        let seg_len: usize = seg.len();
-        if seg_len > 3 {
-            return false;
+        fn is_valid(segment: &str) -> bool {
+            let len = segment.len();
+            if len > 3 || segment.is_empty() {
+                return false;
+            }
+            let num: u32 = segment.parse().unwrap_or(256);
+            num <= 255
         }
-        return if &seg[0..1] != "0" {
-            seg.parse::<u8>().expect("not a valid u8 int") <= 255
-        } else {
-            seg_len == 1
-        };
+
+        fn update_segments(
+            s: &str,
+            curr_dot: usize,
+            segments: &mut Vec<String>,
+            result: &mut Vec<String>,
+        ) {
+            let segment = &s[curr_dot..];
+            if is_valid(segment) {
+                segments.push(segment.to_string());
+                let ip = segments.join(".");
+                result.push(ip);
+                segments.pop();
+            }
+        }
+
+        fn backtrack(
+            s: &str,
+            prev_dot: usize,
+            dots: i32,
+            segments: &mut Vec<String>,
+            result: &mut Vec<String>,
+        ) {
+            let n = s.len();
+            let max_pos = std::cmp::min(n - 1, prev_dot + 4);
+
+            for curr_dot in (prev_dot + 1)..=max_pos {
+                let segment = &s[prev_dot..curr_dot];
+                if is_valid(segment) {
+                    segments.push(segment.to_string());
+                    if dots == 1 {
+                        update_segments(s, curr_dot, segments, result);
+                    } else {
+                        backtrack(s, curr_dot, dots - 1, segments, result);
+                    }
+                    segments.pop();
+                }
+            }
+        }
+
+        backtrack(&s, 0, 3, &mut segments, &mut result);
+        result
     }
-
-    fn update_seg(raw_ip: &String, cd: i8, segs: &Vec<String>, res: &Vec<String>) {}
-
-    fn backtrack(raw_ip: &String, pd: i8, d: i8, segs: &Vec<String>, res: &Vec<String>) {}
 }
