@@ -1,9 +1,8 @@
 #![allow(dead_code)]
-use a_step_in_rust::learn_rust::restore_ip_addresses;
+use a_step_in_rust::learn_rust::generate;
 
 fn main() {
-    let test_string = String::from("101023");
-    let res = restore_ip_addresses(&test_string);
+    let test = generate(20);
 
-    println!("{:?}", res);
+    println!("{:?}", test);
 }

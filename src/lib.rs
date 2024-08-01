@@ -184,4 +184,26 @@ pub mod learn_rust {
         backtrack(&s, 0, 3, &mut segments, &mut result);
         result
     }
+
+    pub fn generate(num_rows: i32) -> Vec<Vec<i32>> { // try iter::successors
+        let mut res: Vec<Vec<i32>> = Vec::with_capacity(num_rows as usize);
+
+        if num_rows == 0 {
+            return res;
+        }
+        res.push(vec![1]);
+
+        for i in 1..num_rows {
+            let prev = &res[i as usize - 1];
+            let mut next = vec![1];
+
+            for j in 1..res.len() {
+                next.push(&prev[j - 1] + &prev[j]);
+            }
+            next.push(1);
+            res.push(next);
+        }
+
+        res
+    }
 }
