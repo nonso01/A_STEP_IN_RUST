@@ -185,7 +185,7 @@ pub mod learn_rust {
         result
     }
 
-    pub fn generate(num_rows: i32) -> Vec<Vec<i32>> { // try iter::successors
+    pub fn generate(num_rows: i32) -> Vec<Vec<i32>> { // try iter::successors, pascal 1
         let mut res: Vec<Vec<i32>> = Vec::with_capacity(num_rows as usize);
 
         if num_rows == 0 {
@@ -205,5 +205,9 @@ pub mod learn_rust {
         }
 
         res
+    }
+
+    pub fn my_atoi(s: String) -> i32 {
+
     }
 }
