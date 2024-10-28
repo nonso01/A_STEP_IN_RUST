@@ -129,63 +129,8 @@ pub mod learn_rust {
         res
     }
 
-    pub fn restore_ip_addresses(s: &String) -> Vec<String> {
-        let mut result = Vec::new();
-        let mut segments = Vec::new(); // lol this is cool
-
-        fn is_valid(segment: &str) -> bool {
-            let len = segment.len();
-            if len > 3 || segment.is_empty() {
-                return false;
-            }
-            let num: u32 = segment.parse().unwrap_or(256);
-            num <= 255
-        }
-
-        fn update_segments(
-            s: &str,
-            curr_dot: usize,
-            segments: &mut Vec<String>,
-            result: &mut Vec<String>,
-        ) {
-            let segment = &s[curr_dot..];
-            if is_valid(segment) {
-                segments.push(segment.to_string());
-                let ip = segments.join(".");
-                result.push(ip);
-                segments.pop();
-            }
-        }
-
-        fn backtrack(
-            s: &str,
-            prev_dot: usize,
-            dots: i32,
-            segments: &mut Vec<String>,
-            result: &mut Vec<String>,
-        ) {
-            let n = s.len();
-            let max_pos = std::cmp::min(n - 1, prev_dot + 4);
-
-            for curr_dot in (prev_dot + 1)..=max_pos {
-                let segment = &s[prev_dot..curr_dot];
-                if is_valid(segment) {
-                    segments.push(segment.to_string());
-                    if dots == 1 {
-                        update_segments(s, curr_dot, segments, result);
-                    } else {
-                        backtrack(s, curr_dot, dots - 1, segments, result);
-                    }
-                    segments.pop();
-                }
-            }
-        }
-
-        backtrack(&s, 0, 3, &mut segments, &mut result);
-        result
-    }
-
-    pub fn generate(num_rows: i32) -> Vec<Vec<i32>> { // try iter::successors, pascal 1
+    pub fn generate(num_rows: i32) -> Vec<Vec<i32>> {
+        // try iter::successors, pascal 1
         let mut res: Vec<Vec<i32>> = Vec::with_capacity(num_rows as usize);
 
         if num_rows == 0 {
@@ -207,7 +152,7 @@ pub mod learn_rust {
         res
     }
 
-    // pub fn my_atoi(s: String) -> i32 {
-
-    // }
+    pub fn add_binary(a: String, b: String) -> String {
+        "hello".to_string()
+    }
 }
