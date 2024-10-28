@@ -1,8 +1,9 @@
 #![allow(dead_code)]
-use a_step_in_rust::learn_rust::generate;
+use a_step_in_rust::learn_rust::guessing_game;
 
 fn main() {
-    let test = generate(20);
+    // let test =
+    guessing_game();
 
-    println!("{:?}", test);
+    // println!("{:?}", test);
 }

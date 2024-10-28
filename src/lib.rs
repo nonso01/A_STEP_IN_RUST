@@ -207,7 +207,7 @@ pub mod learn_rust {
         res
     }
 
-    pub fn my_atoi(s: String) -> i32 {
+    // pub fn my_atoi(s: String) -> i32 {
 
-    }
+    // }
 }
