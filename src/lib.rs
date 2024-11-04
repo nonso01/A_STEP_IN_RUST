@@ -152,7 +152,7 @@ pub mod learn_rust {
         res
     }
 
-    pub fn add_binary(a: String, b: String) -> String {
+    pub fn add_binary(_a: String, _b: String) -> String {
         "hello".to_string()
     }
 }
