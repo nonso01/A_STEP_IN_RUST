@@ -9,11 +9,6 @@ pub mod learn_rust {
     };
     use rand::Rng;
 
-
-
-
-
-
     pub fn fizzbuzz(x: u128) {
         for n in 0..x {
             if n % 2 == 0 {
@@ -33,7 +28,6 @@ pub mod learn_rust {
         }
         println!("{:?}", map);
     }
-
 
     pub fn guessing_game() {
         println!("guess the number!");
@@ -65,8 +59,6 @@ pub mod learn_rust {
             }
         }
     }
-
-
 
     pub fn read_file_content(filename: &str) -> Result<String, io::Error> {
         let mut _file = File::open(filename)?;
@@ -120,7 +112,32 @@ pub mod learn_rust {
         res
     }
 
-    pub fn add_binary(_a: String, _b: String) -> String {
-        "hello".to_string()
+    pub fn add_binary(a: String, b: String) -> String {
+        // let _a = i128::from_str_radix(&a, 2).unwrap();
+        // let _b = i128::from_str_radix(&b, 2).unwrap();
+
+        // let res = _a + _b;
+
+        // format!("{:b}", res) works well for int below 128
+
+        let mut result = String::new();
+        let mut carry = 0;
+        let mut i = a.len();
+        let mut j = b.len();
+
+        while i > 0 || j > 0 || carry > 0 {
+            if i > 0 {
+                i -= 1;
+                carry += a.chars().nth(i).unwrap() as u8 - '0' as u8;
+            }
+            if j > 0 {
+                j -= 1;
+                carry += b.chars().nth(j).unwrap() as u8 - '0' as u8;
+            }
+            result.push((carry % 2 + '0' as u8) as char);
+            carry /= 2;
+        }
+
+        result.chars().rev().collect()
     }
 }
