@@ -113,13 +113,6 @@ pub mod learn_rust {
     }
 
     pub fn add_binary(a: String, b: String) -> String {
-        // let _a = i128::from_str_radix(&a, 2).unwrap();
-        // let _b = i128::from_str_radix(&b, 2).unwrap();
-
-        // let res = _a + _b;
-
-        // format!("{:b}", res) works well for int below 128
-
         let mut result = String::new();
         let mut carry = 0;
         let mut i = a.len();
