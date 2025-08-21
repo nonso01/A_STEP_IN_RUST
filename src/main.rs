@@ -1,9 +1,10 @@
 #![allow(dead_code)]
-// use a_step_in_rust::learn_rust::add_binary;
-use std::fs::{self};
+use a_step_in_rust::learn_rust::fizzbuzz;
+
+// use std::fs::{self};
 
 fn main() {
-    let a = fs::read_to_string("hello.txt").unwrap();
+    let _a = fizzbuzz(20);
 
-    println!("{:?}", a);
+    //println!("{:?}", a);
 }
